@@ -20,8 +20,10 @@ find_package(tf2_ros REQUIRED)
 
 nav2_package()
 
-set(executable_name opennav_following)
-set(library_name ${executable_name}_core)
+# NOTE: can't be named exactly "opennav_following" — rosidl_generate_interfaces()
+# below already claims that name for its own custom target within this project.
+set(executable_name opennav_following_node)
+set(library_name opennav_following_core)
 
 # This package ships its own FollowObject action instead of depending on
 # nav2_msgs, so it installs standalone on Jazzy without needing a patched

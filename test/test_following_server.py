@@ -54,7 +54,7 @@ def generate_test_description():
         # SetEnvironmentVariable('RCUTILS_LOGGING_USE_STDOUT', '1'),
         Node(
             package='opennav_following',
-            executable='opennav_following',
+            executable='opennav_following_node',
             name='following_server',
             parameters=[{'desired_distance': 0.5,
                          'detection_timeout': 0.75,

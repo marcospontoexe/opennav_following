@@ -197,3 +197,14 @@ sudo apt install ros-jazzy-opennav-following
 - The search-rotation control law is a simplified stand-in for upstream's
   `computeRotateToHeadingCommand` (see above) — same purpose, different
   tuning/response curve.
+- `test_following_server_unit` (gtest): all 7 assertions pass, but the test
+  *process* segfaults during exit-time teardown after the `ErrorExceptions`
+  case (which exercises a real action client/server round-trip over DDS).
+  This is isolated to the test binary — the actual `opennav_following_node`
+  executable starts, transitions through its lifecycle, and shuts down
+  cleanly with exit code `0` (verified manually). Root cause not fully
+  identified; suspected `rmw_fastrtps_cpp` teardown ordering interacting with
+  this package's locally-generated (rather than `nav2_msgs`-provided) action
+  typesupport plugin. CI/ctest will report this test as failed despite every
+  assertion passing — check the gtest XML output, not just the exit code, if
+  you rely on this in CI.
