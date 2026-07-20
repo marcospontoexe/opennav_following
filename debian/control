@@ -1,0 +1,13 @@
+Source: ros-jazzy-opennav-following
+Section: misc
+Priority: optional
+Maintainer: Marcos Daniel Santana Grochoska <marcos.daniel1990@hotmail.com>
+Build-Depends: debhelper (>= 9.0.0), ros-jazzy-action-msgs, ros-jazzy-ament-cmake, ros-jazzy-ament-cmake-gtest <!nocheck>, ros-jazzy-ament-cmake-pytest <!nocheck>, ros-jazzy-ament-cmake-ros <!nocheck>, ros-jazzy-ament-lint-auto <!nocheck>, ros-jazzy-ament-lint-common <!nocheck>, ros-jazzy-angles, ros-jazzy-builtin-interfaces, ros-jazzy-geometry-msgs, ros-jazzy-nav2-common, ros-jazzy-nav2-util, ros-jazzy-opennav-docking, ros-jazzy-opennav-docking-core, ros-jazzy-rclcpp, ros-jazzy-rclcpp-components, ros-jazzy-rclcpp-lifecycle, ros-jazzy-rosidl-default-generators, ros-jazzy-tf2, ros-jazzy-tf2-geometry-msgs, ros-jazzy-tf2-ros, ros-jazzy-ros-workspace, ros-jazzy-rosidl-typesupport-fastrtps-c, ros-jazzy-rosidl-typesupport-fastrtps-cpp
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-jazzy-opennav-following
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-jazzy-action-msgs, ros-jazzy-builtin-interfaces, ros-jazzy-geometry-msgs, ros-jazzy-nav2-util, ros-jazzy-opennav-docking, ros-jazzy-opennav-docking-core, ros-jazzy-rclcpp, ros-jazzy-rclcpp-components, ros-jazzy-rclcpp-lifecycle, ros-jazzy-rosidl-default-generators, ros-jazzy-tf2, ros-jazzy-tf2-geometry-msgs, ros-jazzy-tf2-ros, ros-jazzy-ros-workspace
+Description: Jazzy-compatible backport of Nav2's dynamic object following action server (opennav_following, originally developed for the navigation2 &quot;main&quot; branch by Open Navigation LLC and Alberto J.
+ Tudela Roldán). Self-contained: ships its own FollowObject action so it installs standalone on ROS 2 Jazzy.
