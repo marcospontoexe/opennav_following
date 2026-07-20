@@ -9,7 +9,6 @@
     by Open Navigation LLC and Alberto J. Tudela Roldán). Self-contained: ships
     its own FollowObject action so it installs standalone on ROS 2 Jazzy.
   </description>
-  <!-- TODO: preencher com seu nome antes de publicar -->
   <maintainer email="marcos.daniel1990@hotmail.com">Marcos Daniel Santana Grochoska</maintainer>
   <license>Apache-2.0</license>
 
