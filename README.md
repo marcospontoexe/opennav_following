@@ -1,3 +1,26 @@
+## opennav_following (jazzy) - 1.0.0-1
+
+The packages in the `opennav_following` repository were released into the `jazzy` distro by running `/usr/bin/bloom-release --ros-distro jazzy --track jazzy opennav_following` on `Mon, 20 Jul 2026 17:20:58 -0000`
+
+The `opennav_following` package was released.
+
+Version of package(s) in repository `opennav_following`:
+
+- upstream repository: https://github.com/marcospontoexe/opennav_following.git
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `null`
+- new version: `1.0.0-1`
+
+Versions of tools used:
+
+- bloom version: `0.13.0`
+- catkin_pkg version: `1.1.0`
+- rosdep version: `0.26.0`
+- rosdistro version: `1.0.1`
+- vcstools version: `0.1.42`
+
+
 # Nav2 Following (Jazzy port)
 
 This package contains an action server for **dynamic object following**: the
