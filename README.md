@@ -197,15 +197,16 @@ colcon build --packages-select opennav_following
 source install/setup.bash
 ```
 
-## Installing via `apt` (once released)
+## Note on `apt` distribution
 
-Once released to the ROS Jazzy distro index (see the project this package
-came from for the general process, or your own release notes), it installs
-like any other ROS package:
-
-```bash
-sudo apt install ros-jazzy-opennav-following
-```
+This package is **not** distributed via `apt`/the official ROS package
+index, and there's no plan to submit it there. A release was attempted
+through the normal `rosdistro` process, but the Nav2 project maintainer
+closed the pull request, noting that `opennav_*`-prefixed packages are
+considered part of the Nav2 project's own namespace and that independent
+releases under that prefix should be coordinated with the Nav2 team first
+(see [ros/rosdistro#52776](https://github.com/ros/rosdistro/pull/52776)).
+Build it from source as shown above.
 
 ## Known limitations
 
