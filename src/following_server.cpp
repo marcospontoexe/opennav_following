@@ -562,10 +562,24 @@ bool FollowingServer::rotateToObject(
 {
   const double dt = 1.0 / controller_frequency_;
 
+  // object_pose is still default-constructed (empty frame_id) if no detection has
+  // *ever* arrived for this goal -- which is precisely the case this search rotation
+  // exists to recover from. Looking up TF against an empty target frame always fails,
+  // so fall back to the fixed frame and let the robot actually rotate and search.
+  const std::string reference_frame =
+    object_pose.header.frame_id.empty() ? fixed_frame_ : object_pose.header.frame_id;
+
+  // getRefinedPose() blocks internally for up to detection_timeout_ waiting for a
+  // detection, without ever touching iteration_start_time_ -- by the time we get here
+  // (right after that wait times out) it can be tens of seconds stale, which makes this
+  // initial TF lookup ask for a time that has already aged out of the tf2 buffer cache
+  // ("extrapolation into the past"). Refresh it before using it.
+  iteration_start_time_ = this->now();
+
   // Compute initial robot heading
   geometry_msgs::msg::PoseStamped robot_pose;
   if (!nav2_util::getCurrentPose(
-      robot_pose, *tf2_buffer_, object_pose.header.frame_id, base_frame_,
+      robot_pose, *tf2_buffer_, reference_frame, base_frame_,
       transform_tolerance_,
       iteration_start_time_))
   {
@@ -604,7 +618,7 @@ bool FollowingServer::rotateToObject(
 
       // Get current robot pose
       if (!nav2_util::getCurrentPose(
-          robot_pose, *tf2_buffer_, object_pose.header.frame_id, base_frame_,
+          robot_pose, *tf2_buffer_, reference_frame, base_frame_,
           transform_tolerance_,
           iteration_start_time_))
       {
